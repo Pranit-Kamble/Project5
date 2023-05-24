@@ -39,8 +39,6 @@ addbutton.addEventListener("click",function(){
      <div class="todo_body" id="cardBody${cardId}"></div>
      <i id="del" value=${cardId} class="fa-regular fa-trash-can"></i> 
      <button id="addList-${cardId}" value=${cardId} class="fa-solid fa-plus"></button> `
-    //  restoreHeader()
-    //  restoreTasksContainer()
      container2.appendChild(element)
      cardId++;
 
@@ -57,7 +55,6 @@ container2.addEventListener("click",function(event){
     if(event.target.classList.contains("fa-plus")){
         popup2.style.visibility="visible"
         page.style.filter="blur(10px)"
-        const ListName=input2.value
         id = event.target.value;
     }
     else if(event.target.id=="del"){
@@ -66,13 +63,15 @@ container2.addEventListener("click",function(event){
     }
     else if(event.target.id=="cardheader"){
         showcardval=event.target.getAttribute('value')
-        changeHeader();
+        back.style.visibility="visible"
+        tasklist.style.visibility="hidden"
         showCard(event.target.innerText);
     }
     else if(event.target.innerHTML=="Mark Done"){
         let markval=event.target.value
         document.getElementById('markdoneBtn' + markval).style.display = 'none';
         document.getElementById('listText' + markval).style.textDecoration = "line-through";
+        document.getElementById('listText' + markval).style.color = "gray";
     }
 })
 
@@ -109,10 +108,6 @@ function showCard(cardName){
     }
 }
 
-function changeHeader(){
-    back.style.visibility="visible"
-    tasklist.style.visibility="hidden"
-}
 
 back.addEventListener("click",function(){
     back.style.visibility="hidden"
